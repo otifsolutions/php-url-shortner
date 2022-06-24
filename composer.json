@@ -1,0 +1,26 @@
+{
+  "name": "otifsolutions/shorturlapp",
+  "description": "This is a laravel package to convert the url into short code and track the visits to the links.",
+  "type": "laravel",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Otifsolutions\\ShortUrlApp\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "otifsolutions",
+      "email": "contact@otif-solutions.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "otifsolutions\\shorturlapp\\ShortUrlServiceProvider"
+      ]
+    }
+  },
+  "require": {}
+}
