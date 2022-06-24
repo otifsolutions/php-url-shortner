@@ -4,16 +4,23 @@ namespace OTIFSolutions\ShortUrlApp\Traits;
 
 use OTIFSolutions\ShortUrlApp\Models\Tracker;
 
-trait ShortUrlTrait{
-    public static function getDetails(){
+trait ShortUrlTrait {
+    public static function getDetails() {
         $details = Tracker::all();
-        return response()->json(['Success' => ['details' => $details]]);
+        if ($details){
+
+            return response()->json(['success' => ['details' => $details]]);
+        }
+        return response()->json(['error' => ['data not found']]);
     }
 
-    public static function getData($ipAddress){
+    public static function getData($ipAddress) {
 
-        $data = Tracker::where('ip_address', $ipAddress);
-        return response()->json(['Success' => ['data' => $data]]);
+        $data = Tracker::where('ip_address', $ipAddress)->get();
+        if ($data) {
+            return response()->json(['success' => ['data' => $data]]);
+        }
+        return response()->json(['error' => ['data not found']]);
 
     }
 }

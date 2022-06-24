@@ -1,6 +1,6 @@
 <?php
 
-namespace otifsolutions\ShortUrlApp;
+namespace OTIFSolutions\ShortUrlApp;
 
 use Illuminate\Support\ServiceProvider;
 use OTIFSolutions\ShortUrlApp\Http\Middleware\ShortUrlApp;

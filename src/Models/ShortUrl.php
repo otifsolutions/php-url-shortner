@@ -1,6 +1,6 @@
 <?php
 
-namespace otifsolutions\ShortUrlApp\Models;
+namespace OTIFSolutions\ShortUrlApp\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Crypt;

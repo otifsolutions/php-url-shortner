@@ -18,7 +18,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "otifsolutions\\shorturlapp\\ShortUrlServiceProvider"
+        "OTIFSolutions\\ShortUrlApp\\ShortUrlServiceProvider"
       ]
     }
   },
