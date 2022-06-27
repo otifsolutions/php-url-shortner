@@ -5,7 +5,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Otifsolutions\\ShortUrlApp\\": "src/"
+      "OTIFSolutions\\ShortUrlApp\\": "src/"
     }
   },
   "authors": [
