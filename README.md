@@ -2,7 +2,7 @@
 
 `   PHP 8.1.2 > PHP 8`
 
-###How to use the library
+### How to use the library
 
 Install via the composer
 
@@ -21,9 +21,9 @@ Namespace for Model `ShortUrl`
 ```
 
 - Update or Create a new `Url`
-  
+
   `ShortUrl::set('KEY_GOES_HERE','/VALUE_GOES_HERE');`
-  
+
   type of url is `STRING`
 
 - Get a ShortUrl
@@ -38,11 +38,12 @@ Namespace for Model `ShortUrl`
 
   If Url does not exist the system will return null.
 
-###Middleware
+### Middleware
+
 - Middleware handles the incoming request.
 - Middleware is set on route. such as
-  
+
   `->middleware('short_url_tracker');`
-  
-- Middleware tracks the user when he sends `http://` request. 
-- The user is sent to the next page if request is validate otherwise error is returned.
+
+- Middleware tracks the user when he sends `http://` request.
+- Middleware take the user to the website link stored in database otherwise error is returned.
