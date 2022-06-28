@@ -2,8 +2,8 @@
 
 namespace OTIFSolutions\ShortUrlApp\Http\Middleware;
 
-use otifsolutions\ShortUrlApp\Models\ShortUrl;
-use otifsolutions\ShortUrlApp\Models\Tracker;
+use OTIFSolutions\ShortUrlApp\Models\ShortUrl;
+use OTIFSolutions\ShortUrlApp\Models\Tracker;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
