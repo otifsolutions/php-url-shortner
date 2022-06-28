@@ -18,15 +18,13 @@ Then simply run migrations to run the ShortUrl and Tracker migrations
 
 Namespace for Model `ShortUrl`
 
-    ```php
-        use otifsolutions\shorturlapp\Models\ShortUrl;
-    ```
+```php
+    use OTIFSolutions\ShortUrlApp\Models\ShortUrl;
+```
 
 - Update or Create a new `Url`
-
-  `ShortUrl::set('KEY_GOES_HERE','VALUE_GOES_HERE');`
-
-  type if url is `STRING`
+  `ShortUrl::set('KEY_GOES_HERE','/VALUE_GOES_HERE');`
+  type of url is `STRING`
 
 - Get a ShortUrl
 
@@ -39,3 +37,4 @@ Namespace for Model `ShortUrl`
   `ShortUrl::remove('KEY_GOES_HERE');`
 
   If Url does not exist the system will return null.
+

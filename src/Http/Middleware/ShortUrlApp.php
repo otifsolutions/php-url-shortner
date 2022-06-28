@@ -9,36 +9,35 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ShortUrlApp
-{
+class ShortUrlApp {
     /**
      * Handle an incoming request.
      *
      * @param Request $request
-     * @param  Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return Response|RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
-    {
+    public function handle(Request $request, Closure $next) {
         $path = $request->path();
         $data = ShortUrl::where('key', $path)->first();
-
         if ($data) {
-            Tracker::create([
+            $getData = Tracker::create([
                 'short_url_id' => $data['id'],
                 'ip_address' => $request->ip(),
                 'full_url' => $request->fullUrl(),
                 'operating_system' => $request->header('sec-ch-ua-platform'),
                 'browser' => $request->userAgent(),
             ]);
-        }
-
-        if ($request->get('q')) {
-            $find = ShortUrl::where('code', $request->get('q'))->first();
-            if ($find) {
-                return redirect($find['value']);
+            if ($request->get('q')) {
+                $find = ShortUrl::where('code', $request->get('q'))->first();
+                if ($find) {
+                    return redirect($find['value']);
+                } else {
+                    abort(403);
+                }
+            } else {
+                return $next($request);
             }
-        }
-        return $next($request);
+        } else abort();
     }
 }
