@@ -18,15 +18,16 @@ class ShortUrlApp {
      * @return Response|RedirectResponse
      */
     public function handle(Request $request, Closure $next) {
-        $data = ShortUrl::where('code', $request->get('q'))->first();
-        if ($data) {
-            $getData = Tracker::create([
-                'short_url_id' => $data['id'],
+        $shortUrl = ShortUrl::where('code', $request->get('q'))->first();
+        if ($shortUrl) {
+            Tracker::create([
+                'short_url_id' => $shortUrl['id'],
                 'ip_address' => $request->ip(),
                 'full_url' => $request->fullUrl(),
                 'operating_system' => $request->header('sec-ch-ua-platform'),
                 'browser' => $request->userAgent(),
             ]);
+            return redirect($shortUrl['url']);
         }
         return $next($request);
     }
