@@ -4,4 +4,4 @@ use OTIFSolutions\ShortUrlApp\Models\ShortUrl;
 
 Route::get('/url', function () {
 
-})->middleware('url_tracker');
+})->middleware('short_url_tracker');
