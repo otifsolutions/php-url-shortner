@@ -16,19 +16,15 @@ Then simply run migrations to run the ShortUrl and Tracker migrations
 
 `php artisan migrate`
 
-Namespace for Model `ShortUrl`
 
-```php
-    use OTIFSolutions\ShortUrlApp\Models\ShortUrl;
-```
-
-##ShortUrl
+###ShortUrl
 
 Namespace for Model `ShortUrl`
 
 ```php
     use OTIFSolutions\ShortUrlApp\Models\ShortUrl;
 ```
+
 - Generate a new code against `Url`
 
   `ShortUrl::set('Url');`
@@ -46,18 +42,16 @@ Namespace for Model `ShortUrl`
   `ShortUrl::remove('Url');`
 
   If Url does not exist the system will return null.
+
 ###Tracker
+
 - Namespace for Model `Tracker`,
 
   `use OTIFSolutions\ShortUrlApp\Models\Tracker;`
 
-- This model tracks the user and stores the user details such as, `ip_address`, `full_url`, `operating_system` and  `browser`.
+- This model tracks the `url` and store details such as, `ip_address`, `full_url`, `operating_system` and  `browser`.
 
-###ShortUrlTrait
-
-- It returns user details that are tracked by the middleware.
-
-### Middleware Usage
+###Middleware Usage
 
 - Middleware handles the incoming request and tracks the user.
 - Middleware is set on route. such as
