@@ -47,5 +47,5 @@ Namespace for Model `ShortUrl`
 
   `->middleware('short_url_tracker');`
 
-- Middleware tracks the user when he sends `http://` request.
-- Middleware take the user to the website link stored in database otherwise error is returned.
+- Middleware tracks the user when he sends `http://` request with valid query parameter otherwise take the user to the link stored in the database.
+
