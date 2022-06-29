@@ -51,14 +51,7 @@ Namespace for Model `ShortUrl`
 
 - This model tracks the `url` and store details such as, `ip_address`, `full_url`, `operating_system` and  `browser`.
 
-###Middleware Usage
+###Example
 
-- Middleware handles the incoming request and tracks the user.
-- Middleware is set on route. such as
-
-  ```php
-     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('short_url_tracker');
-  ```
-  
-- Middleware tracks when the user sends `http://` request with query parameter, and it exists in database otherwise take the user to the url stored in the database.
-
+- Url will be Tracked if the user sends `http://` request with query parameter, and it exists in database otherwise error will be returned.
+- Use `/url` route with generated query parameter e.g. `http://localhost/url?q=3XY5F`.

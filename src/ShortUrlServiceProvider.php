@@ -15,6 +15,5 @@ class ShortUrlServiceProvider extends ServiceProvider {
     }
     public function boot() {
 
-        $this->app['router']->aliasMiddleware('short_url_tracker', ShortUrlApp::class);
     }
 }
