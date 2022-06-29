@@ -18,8 +18,7 @@ class ShortUrlApp {
      * @return Response|RedirectResponse
      */
     public function handle(Request $request, Closure $next) {
-        $path = $request->path();
-        $data = ShortUrl::where('key', $path)->first();
+        $data = ShortUrl::where('code', $request->get('q'))->first();
         if ($data) {
             $getData = Tracker::create([
                 'short_url_id' => $data['id'],
@@ -28,16 +27,7 @@ class ShortUrlApp {
                 'operating_system' => $request->header('sec-ch-ua-platform'),
                 'browser' => $request->userAgent(),
             ]);
-            if ($request->get('q')) {
-                $find = ShortUrl::where('code', $request->get('q'))->first();
-                if ($find) {
-                    return redirect($find['value']);
-                } else {
-                    abort(403);
-                }
-            } else {
-                return $next($request);
-            }
-        } else abort();
+        }
+        return $next($request);
     }
 }

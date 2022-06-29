@@ -13,7 +13,9 @@ Either run the following command in the root directory of your project:
 `composer require otifsolutions/shorturlapp`
 
 Then simply run migrations to run the ShortUrl and Tracker migrations
+
 `php artisan migrate`
+
 Namespace for Model `ShortUrl`
 
 ```php

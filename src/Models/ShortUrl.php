@@ -10,10 +10,11 @@ class ShortUrl extends \Illuminate\Database\Eloquent\Model {
     use HasFactory;
 
     protected $guarded = ['id'];
+
     public function trackers() {
         return $this->hasMany(Tracker::class, 'short_url_id');
     }
-    
+
     /**
      * Set a value in the table.
      * Default Type : 'STRING'
@@ -22,35 +23,36 @@ class ShortUrl extends \Illuminate\Database\Eloquent\Model {
      * @param $value
      *
      */
-    public static function set($key, $value) {
-        self::updateOrCreate([
-            'key' => $key],
-            ['value' => ($value),
-                'code' => Str::random(5)]);
+    public static function set($url) {
+        self::updateOrCreate(
+            ['url' => $url],
+            ['url' => ($url),
+             'code' => Str::random(5)]);
     }
+
     /**
-     * Get a value parsed in the type for a given key. Null if not exists
+     * Get a value parsed in the type for a given url. Null if not exists
      *
-     * @param $key
+     * @param $url
      * @return mixed|null
      */
-    public static function get($key) {
-        $item = self::where('key', $key)->first();
+    public static function get($url) {
+        $item = self::where('url', $url)->first();
         if ($item) {
             return response()->json($item);
-        }
-        else
+        } else
             return null;
 
     }
+
     /**
      * Delete url from database by key.
      *
-     * @param $key
+     * @param $url
      * @return bool|null
      */
-    public static function remove($key) {
-        return self::where('key', $key)->delete();
+    public static function remove($url) {
+        return self::where('url', $url)->delete();
     }
 
 }
