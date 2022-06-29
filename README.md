@@ -22,30 +22,49 @@ Namespace for Model `ShortUrl`
     use OTIFSolutions\ShortUrlApp\Models\ShortUrl;
 ```
 
-- Update or Create a new `Url`
+##ShortUrl
 
-  `ShortUrl::set('KEY_GOES_HERE','/VALUE_GOES_HERE');`
+Namespace for Model `ShortUrl`
 
-  type of url is `STRING`
+```php
+    use OTIFSolutions\ShortUrlApp\Models\ShortUrl;
+```
+- Generate a new code against `Url`
+
+  `ShortUrl::set('Url');`
+
+  Type of url is `STRING`
 
 - Get a ShortUrl
 
-  `ShortUrl::get('KEY_GOES_HERE');`
+  `ShortUrl::get('Url');`
 
   If Url does not exist the system will return null
 
 - Delete a `Url`
 
-  `ShortUrl::remove('KEY_GOES_HERE');`
+  `ShortUrl::remove('Url');`
 
   If Url does not exist the system will return null.
+###Tracker
+- Namespace for Model `Tracker`,
 
-### Middleware
+  `use OTIFSolutions\ShortUrlApp\Models\Tracker;`
 
-- Middleware handles the incoming request.
+- This model tracks the user and stores the user details such as, `ip_address`, `full_url`, `operating_system` and  `browser`.
+
+###ShortUrlTrait
+
+- It returns user details that are tracked by the middleware.
+
+### Middleware Usage
+
+- Middleware handles the incoming request and tracks the user.
 - Middleware is set on route. such as
 
-  `->middleware('short_url_tracker');`
-
-- Middleware tracks the user when he sends `http://` request with valid query parameter otherwise take the user to the link stored in the database.
+  ```php
+     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('short_url_tracker');
+  ```
+  
+- Middleware tracks when the user sends `http://` request with query parameter, and it exists in database otherwise take the user to the url stored in the database.
 
