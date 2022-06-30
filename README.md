@@ -49,10 +49,15 @@ Namespace for Model `ShortUrl`
 
   `use OTIFSolutions\ShortUrlApp\Models\Tracker;`
 
-- This model tracks the `url` and store details such as, `ip_address`, `full_url`, `operating_system` and  `browser`.
+- This model tracks the `url` and stores following details:
+  
+  `ip_address`, `full_url`, `operating_system` and  `browser`.
 
-### Example
+### Usage
 
-- Url will be Tracked and redirected if the user sends `http://url` request with query parameter, which exists in the database.
-- In the case of wrong parameter, error will be returned.
-- Use `/url` route with generated query parameter such as, `http://localhost/url?q=W2tht`.
+- Url will be Tracked and redirected if the user sends `/url` request with generated code.
+  + `abc.xyz/url?q=W2tht`.
+  +  Where 'url' is route, 'q' is a parameter and 'W2tht' is code which user generates. 
+- In the case of wrong parameter, following error will be returned.
+  + `return response()->json(['errors' => ['error' => 'url not exists']]);`
+
