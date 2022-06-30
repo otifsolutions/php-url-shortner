@@ -17,7 +17,7 @@ Then simply run migrations to run the ShortUrl and Tracker migrations
 `php artisan migrate`
 
 
-###ShortUrl
+### ShortUrl
 
 Namespace for Model `ShortUrl`
 
@@ -43,7 +43,7 @@ Namespace for Model `ShortUrl`
 
   If Url does not exist the system will return null.
 
-###Tracker
+### Tracker
 
 - Namespace for Model `Tracker`,
 
@@ -51,7 +51,8 @@ Namespace for Model `ShortUrl`
 
 - This model tracks the `url` and store details such as, `ip_address`, `full_url`, `operating_system` and  `browser`.
 
-###Example
+### Example
 
-- Url will be Tracked if the user sends `http://` request with query parameter, and it exists in database otherwise error will be returned.
-- Use `/url` route with generated query parameter e.g. `http://localhost/url?q=3XY5F`.
+- Url will be Tracked and redirected if the user sends `http://url` request with query parameter, which exists in the database.
+- In the case of wrong parameter, error will be returned.
+- Use `/url` route with generated query parameter such as, `http://localhost/url?q=W2tht`.
