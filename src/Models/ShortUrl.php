@@ -19,15 +19,14 @@ class ShortUrl extends \Illuminate\Database\Eloquent\Model {
      * Set a value in the table.
      * Default Type : 'STRING'
      *
-     * @param $key
-     * @param $value
+     * @param $url
      *
      */
     public static function set($url) {
         self::updateOrCreate(
             ['url' => $url],
             ['url' => ($url),
-             'code' => Str::random(5)]);
+             'code' => Str::random(7)]);
     }
 
     /**
