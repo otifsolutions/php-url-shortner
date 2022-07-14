@@ -23,10 +23,11 @@ class ShortUrl extends \Illuminate\Database\Eloquent\Model {
      *
      */
     public static function set($url) {
-        self::updateOrCreate(
+        $randomCode = self::firstOrCreate(
             ['url' => $url],
             ['url' => ($url),
              'code' => Str::random(7)]);
+        return $randomCode->code;
     }
 
     /**
